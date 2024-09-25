@@ -1,0 +1,46 @@
+.primarybtn{
+  display: flex;
+justify-content: center;
+align-items: center;
+margin-top: 25%;
+
+}
+
+.buttonWrapper {
+  font-family: "Luckiest Guy",cursive;
+  font-weight: 400;
+  font-style: normal;
+  height: 100px;
+  width: 300px;
+  background: linear-gradient(#fefb72, #fefca3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 15px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.buttonWrapper:hover {
+  transform: scale(1.1);
+  box-shadow: 0px 4px 15px 0px rgba(17,17,17,0.8);
+}
+.buttonWrapper .buttonInner {
+  height: 75%;
+  width: 90%;
+  background: linear-gradient(#eee802, #fefb72);
+  transform: skew(-5deg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.buttonWrapper .buttonInner p {
+  font-size: 3rem;
+  color: #2c3076;
+  margin: 15px 0 0 0;
+}
+
+
+
+.pageWrapper a {
+  text-decoration: none;
+}
