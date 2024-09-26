@@ -1,11 +1,20 @@
 import React, { useRef } from 'react';
 import { useState } from 'react';
 import styles from './PopUp.module.css';
+import { useSelector, useDispatch } from 'react-redux'
+import { setplayerOne } from '../../store/slice/gameSlice'
 
 function PopUp({toggle}) {
 const inputRef = useRef();
 const [btn , setBtn] =useState(false)
 const [ userName , setUserName] = useState([])
+
+
+
+const count = useSelector((state) => state.game.value)
+console.log("redux" , count)
+const dispatch = useDispatch()
+
 
 
 function playerOne() {
@@ -33,18 +42,17 @@ function playerTwo() {
     if ( typeof inputValue === "string" && inputValue.length === 0) {
       return prevUserNames
     } else {
-
       return [...prevUserNames, inputValue];
-
     }
-
   });
 
   inputRef.current.value = ""
-
+  console.log(userName)
+  dispatch(setplayerOne(userName[0]));
 }
 
 console.log(userName[0] , userName[1])
+console.log(userName)
 
 
 function clickHandler() {
