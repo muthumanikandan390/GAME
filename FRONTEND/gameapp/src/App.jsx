@@ -2,10 +2,13 @@
 import { BrowserRouter , Routes , Route } from "react-router-dom";
 import HomePage from './pages/HomePage';
 import GamePage from "./pages/GamePage";
+import { Provider } from 'react-redux';
+import store from './store/store';
 
 function App() {
 
   return (
+    <Provider store={store}>
     <BrowserRouter>
 
     <Routes>
@@ -14,6 +17,7 @@ function App() {
     </Routes>
 
   </BrowserRouter>
+  </Provider>
   )
 }
 
