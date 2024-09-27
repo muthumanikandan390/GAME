@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { useState } from 'react';
+import { useState , useEffect } from 'react';
 import styles from './PopUp.module.css';
 import { useSelector, useDispatch } from 'react-redux'
 import { setplayerOne , setplayerTwo } from '../../store/slice/gameSlice'
@@ -23,10 +23,10 @@ function playerOne() {
       return prevUserNames
     }
     if ( typeof inputValue === "string" && inputValue.length === 0) {
+      alert("enter a name")
       return prevUserNames
     } else {
       return [...prevUserNames, inputValue];
-
     }
 
   }) ;
@@ -59,11 +59,21 @@ function playerTwo() {
 dispatch(setplayerTwo(userName[1]));
 
 
+useEffect(function(){
+  if (userName.length === 1) {
+    setBtn((prevBtn) => !prevBtn);
+  }
+},[userName.length])
+
+
+
 function clickHandler() {
-  setBtn(!btn)
+
+  if (userName.length === 1) {
+    setBtn((prevBtn) => !prevBtn);
+  }
+
 }
-
-
 
   return (
 

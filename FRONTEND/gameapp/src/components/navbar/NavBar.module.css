@@ -8,15 +8,38 @@
   align-items: center;
   justify-content: center;
   position: relative;
+
+
 }
 
 .navbarBtn{
-
 position: absolute;
 right: 100px;
 padding: 10px 30px 10px 30px;
 background-color: gold;
-border: none;
+border: 1px solid;
 font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+animation:borderAnimation 3s infinite;
+}
 
+@keyframes borderAnimation {
+
+  0% {
+    border-image: linear-gradient(45deg, red, yellow, green) 1;
+  }
+  33% {
+    border-image: linear-gradient(45deg, yellow, green, red) 1;
+  }
+  10% {
+    border-image: linear-gradient(45deg, red, yellow, green) 1;
+  }
+  66% {
+    border-image: linear-gradient(45deg, green, red, yellow) 1;
+  }
+  10% {
+    border-image: linear-gradient(45deg, red, yellow, green) 1;
+  }
+  100% {
+    border-image: linear-gradient(45deg, red, yellow, green) 1;
+  }
 }

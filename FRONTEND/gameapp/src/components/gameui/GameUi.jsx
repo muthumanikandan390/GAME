@@ -2,9 +2,16 @@ import styles from './GameUi.module.css';
 
 function GameUi() {
   return (
-    <div className={styles.gameui}>
 
-    </div>
+<div>
+<div className={styles.popup}>
+
+
+
+</div>
+
+</div>
+
   )
 }
 
