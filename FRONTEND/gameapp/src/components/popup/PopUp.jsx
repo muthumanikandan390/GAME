@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import { useState } from 'react';
 import styles from './PopUp.module.css';
 import { useSelector, useDispatch } from 'react-redux'
-import { setplayerOne } from '../../store/slice/gameSlice'
+import { setplayerOne , setplayerTwo } from '../../store/slice/gameSlice'
 
 function PopUp({toggle}) {
 const inputRef = useRef();
@@ -10,9 +10,8 @@ const [btn , setBtn] =useState(false)
 const [ userName , setUserName] = useState([])
 
 
-
 const count = useSelector((state) => state.game.value)
-console.log("redux" , count)
+
 const dispatch = useDispatch()
 
 
@@ -27,10 +26,17 @@ function playerOne() {
       return prevUserNames
     } else {
       return [...prevUserNames, inputValue];
+
     }
-  });
+
+  }) ;
+
   inputRef.current.value = ""
+
 }
+
+dispatch(setplayerOne(userName[0]));
+
 
 
 function playerTwo() {
@@ -47,17 +53,16 @@ function playerTwo() {
   });
 
   inputRef.current.value = ""
-  console.log(userName)
-  dispatch(setplayerOne(userName[0]));
+
 }
 
-console.log(userName[0] , userName[1])
-console.log(userName)
+dispatch(setplayerTwo(userName[1]));
 
 
 function clickHandler() {
   setBtn(!btn)
 }
+
 
 
   return (
@@ -70,7 +75,7 @@ function clickHandler() {
 <input className={styles.input} type="text" ref={inputRef}  />
 <br></br>
 
-{btn === false ? <button className={styles.submit} onClick={() => { playerOne();clickHandler(); }} ><span>next</span></button> : <button className={styles.submit} onClick={()=>playerTwo()} ><span>submit</span></button> }
+{btn === false ? <button className={styles.submit} onClick={() => { playerOne(); clickHandler(); }} ><span>next</span></button> : <button className={styles.submit} onClick={()=>playerTwo()} ><span>submit</span></button> }
 
 
 </div>

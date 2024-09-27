@@ -4,21 +4,35 @@ import PopUp from '../components/popup/PopUp';
 import PrimaryBtn from '../components/primarybtn/PrimaryBtn';
 import { useState, useEffect } from 'react';
 import GameUi from '../components/gameui/GameUi';
+import { useSelector, useDispatch } from 'react-redux';
+// import { playerArrLengthCheck } from '../store/slice/gameSlice';
+
 
 function GamePage() {
   const [flag, setFlag] = useState(false);
   const [gameui, setGameUi] = useState(false);
+  const myLength = useSelector((state) => state.game.playerArrLength)
+  console.log("hello",myLength)
 
 
-  function gameRender() {
-    const arr = [1];
-    return arr.length === 2;
+
+
+useEffect(function(){
+  const currentValue = myLength
+  if(currentValue === 2 ) {
+    setGameUi(true)
+  } else {
+    return
   }
+}, [myLength])
 
 
-  useEffect(() => {
-    setGameUi(gameRender());
-  }, []);
+// useEffect(() => {
+//   if (myLength === 2) {
+//     setGameUi(true);  // Set GameUi directly instead of toggling
+//   }
+// }, [myLength]);
+
 
   return (
     <div className={styles.gamepage}>
