@@ -5,6 +5,7 @@ import PrimaryBtn from '../components/primarybtn/PrimaryBtn';
 import { useState, useEffect } from 'react';
 import GameUi from '../components/gameui/GameUi';
 import { useSelector, useDispatch } from 'react-redux';
+import { useSpring, animated } from 'react-spring';
 // import { playerArrLengthCheck } from '../store/slice/gameSlice';
 
 
@@ -13,6 +14,19 @@ function GamePage() {
   const [gameui, setGameUi] = useState(false);
   const myLength = useSelector((state) => state.game.playerArrLength)
   console.log("hello",myLength)
+
+  const inputUi = useSpring({
+    opacity: !flag ? 0 : 1,
+    transform: !flag ? 'translateY(0)' : 'translateY(-20px)',
+    config: { tension:900, friction: 160 },
+    from: { opacity: 1, transform: 'translateY(-20px)' },
+  })
+
+  const gameUiSpring = useSpring({
+    opacity: gameui ? 1 : 0,
+    transform: gameui ? 'translateY(0)' : 'translateY(-20px)',
+    config: { tension:900, friction: 100 },
+  });
 
 
 
@@ -29,7 +43,7 @@ useEffect(function(){
 
 // useEffect(() => {
 //   if (myLength === 2) {
-//     setGameUi(true);  // Set GameUi directly instead of toggling
+//     setGameUi(true);
 //   }
 // }, [myLength]);
 
@@ -40,11 +54,19 @@ useEffect(function(){
 
 
       {gameui ? (
+        // <GameUi />
+        <animated.div style={gameUiSpring}>
         <GameUi />
+      </animated.div>
       ) : (
         <>
           {!flag && <PrimaryBtn toggle={() => setFlag(true)} />}
+
+          <animated.div style={inputUi}>
           {flag && <PopUp toggle={() => setFlag(false)} />}
+          </animated.div>
+
+
         </>
       )}
     </div>
