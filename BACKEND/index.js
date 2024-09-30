@@ -2,6 +2,7 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 import mongoose from 'mongoose';
+import routes from './routes.js';
 
 const app = express();
 const PORT = 5000;
@@ -18,15 +19,6 @@ mongoose.connect(db)
 
 app.use(bodyParser.json());
 
-app.get('/', (req, res) => {
-  res.send('Hello, world');
-});
-
-app.post('/', (req, res) => {
-  if (Object.keys(req.body).length > 1) {
-    console.log("Request body:", req.body);
-  }
-  res.status(200).send('Data processed');
-});
+app.use('/', routes);
 
 app.listen(PORT, () => console.log(`Server running on port: http://localhost:${PORT}`));
