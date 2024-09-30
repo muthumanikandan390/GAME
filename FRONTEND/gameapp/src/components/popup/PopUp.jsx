@@ -54,6 +54,7 @@ function playerTwo() {
 
   inputRef.current.value = ""
 
+
 }
 
 dispatch(setplayerTwo(userName[1]));
@@ -64,6 +65,13 @@ useEffect(function(){
     setBtn((prevBtn) => !prevBtn);
   }
 },[userName.length])
+
+
+useEffect(function(){
+  if(userName.length > 0 ){
+    console.log("useEffects - userName",userName)
+  }
+})
 
 
 
