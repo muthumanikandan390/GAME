@@ -56,6 +56,8 @@ const initialState = {
   playerArr: [],
   value: 0,
   playerArrLength: 0,
+  endCount:0,
+
 };
 
 export const gameSlice = createSlice({
@@ -82,9 +84,15 @@ export const gameSlice = createSlice({
       state.playerArrLength = state.playerArr.length;
       console.log("redux arr", state.playerArr);
     },
+
+    endGameLogic: (state , action) => {
+      state.endCount += 1;
+    }
+
+
   },
 });
 
-export const { increment, setplayerOne, setplayerTwo } = gameSlice.actions;
+export const { increment, setplayerOne, setplayerTwo, endGameLogic} = gameSlice.actions;
 
 export default gameSlice.reducer;
