@@ -103,7 +103,7 @@ useEffect(function(){
   if(userName.length > 1 ){
     const playerNames = {players1 : userName[0] , player2 : userName[1]}
     axios.post("http://localhost:5000/",playerNames).then((response) => {
-      console.log(response.status, response.data);
+      // console.log(response.status, response.data);
     });
   }
 },[userName])

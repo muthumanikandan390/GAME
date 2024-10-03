@@ -74,7 +74,7 @@ export const gameSlice = createSlice({
         state.playerArr[0] = action.payload;
       }
       state.playerArrLength = state.playerArr.length;
-      console.log("redux arr", state.playerArr);
+      // console.log("redux arr", state.playerArr);
     },
 
     setplayerTwo: (state, action) => {
@@ -82,7 +82,7 @@ export const gameSlice = createSlice({
         state.playerArr[1] = action.payload;
       }
       state.playerArrLength = state.playerArr.length;
-      console.log("redux arr", state.playerArr);
+      // console.log("redux arr", state.playerArr);
     },
 
     endGameLogic: (state , action) => {

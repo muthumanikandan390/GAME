@@ -6,14 +6,28 @@ import { useState, useEffect } from 'react';
 import GameUi from '../components/gameui/GameUi';
 import { useSelector, useDispatch } from 'react-redux';
 import { useSpring, animated } from 'react-spring';
+import Result from '../components/result/Result';
 // import { playerArrLengthCheck } from '../store/slice/gameSlice';
 
 
 function GamePage() {
   const [flag, setFlag] = useState(false);
   const [gameui, setGameUi] = useState(false);
+  const [resultUi , setResultUi] = useState(false);
+
   const myLength = useSelector((state) => state.game.playerArrLength)
-  console.log("hello",myLength)
+  // console.log("hello",myLength)
+  const currentEndCount = useSelector((state) => state.game.endCount)
+  // console.log(console.log("currentEndCount",currentEndCount))
+
+  useEffect(() => {
+      // console.log("currentEndCount",currentEndCount);
+      if(currentEndCount === 12 ) {
+        setResultUi((prevState)=> !prevState )
+      }
+  }, [currentEndCount]);
+
+
 
   const inputUi = useSpring({
     opacity: !flag ? 0 : 1,
@@ -54,16 +68,21 @@ useEffect(function(){
 
 
       {gameui ? (
-        // <GameUi />
-        <animated.div style={gameUiSpring}>
-        <GameUi />
-      </animated.div>
+
+    resultUi ? <animated.div style={gameUiSpring}> <Result /></animated.div> : <animated.div style={gameUiSpring}>
+    <GameUi />
+
+  </animated.div>
+
+
       ) : (
         <>
           {!flag && <PrimaryBtn toggle={() => setFlag(true)} />}
 
           <animated.div style={inputUi}>
           {flag && <PopUp toggle={() => setFlag(false)} />}
+
+
           </animated.div>
 
 
