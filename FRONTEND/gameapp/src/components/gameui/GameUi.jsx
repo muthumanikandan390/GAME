@@ -15,11 +15,11 @@ const [p1 , p2] = useSelector((state) => state.game.playerArr)
 const currentEndCount = useSelector((state) => state.game.endCount)
 // console.log(console.log("currentEndCount",currentEndCount))
 
-useEffect(() => {
-  if (currentEndCount === 8) {
-    // console.log("end");
-  }
-}, [currentEndCount]);
+// useEffect(() => {
+//   if (currentEndCount === 8) {
+//     // console.log("end");
+//   }
+// }, [currentEndCount]);
 
 
 const dispatch = useDispatch();
@@ -39,6 +39,8 @@ const [ countP2 , setCountP2] = useState(0)
 const [count , setCount] = useState(0)
 const [round , setRound] = useState(0)
 const [enabler , setEnabler] = useState('')
+const [togglerP1 , setTogglerP1] = useState(false)
+const [togglerP2 , setTogglerP2] = useState(false)
 
 
 
@@ -47,12 +49,20 @@ function handleRound(){
 }
 
 
+function handleTogglerP1(){
+  setTogglerP1(true)
+  setTogglerP2(false)
 
-
+}
+function handleTogglerP2(){
+  setTogglerP2(true)
+  setTogglerP1(false)
+}
 
 function handleCount(){
   setCount((prev)=> prev + 1)
 }
+
 
 
 function handleDisableP1() {
@@ -64,6 +74,7 @@ function handleDisableP2() {
   setDisablerP2(true);
   // setDisablerP1(false);
 }
+
 
 function handleEnable(){
   setDisablerP1(false);
@@ -220,8 +231,8 @@ useEffect(function(){
 
 
 <div className={styles.miniContainer1} >
-<h1 className={styles.player}> {p1}<span>{`${disablerP2 === true ? "'s turn" : ""}`}</span> </h1>
-<button className={styles.playerBtn} onClick={()=>{handlerRandomP1(), handleDisableP1() , handleCount(), handleRound() }} disabled={disablerP1}>
+<h1 className={styles.player}> {p1}<span>{`${togglerP2 === true ? "'s turn" : ""}`}</span> </h1>
+<button className={styles.playerBtn} onClick={()=>{handlerRandomP1(), handleDisableP1() , handleCount(), handleRound() , handleTogglerP1()}} disabled={disablerP1}>
   <img className={styles.gameImg} src={imgP1}/>
   <p>{sign}</p>
   </button>
@@ -237,8 +248,8 @@ useEffect(function(){
 
 
 <div className={styles.miniContainer3}>
-<h1 className={styles.player}>{p2}<span>{`${disablerP1 === true ? "'s turn" : ""}`}</span> </h1>
-<button className={styles.playerBtn} onClick={()=>{handlerRandomP2(), handleDisableP2() ,handleCount()}} disabled={disablerP2}>
+<h1 className={styles.player}>{p2}<span>{`${togglerP1 === true ? "'s turn" : ""}`}</span> </h1>
+<button className={styles.playerBtn} onClick={()=>{handlerRandomP2(), handleDisableP2() ,handleCount() , handleTogglerP2()}} disabled={disablerP2}>
   <img className={styles.gameImg} src={imgP2}/>
   <p>{signP2}</p>
   </button>

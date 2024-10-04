@@ -1,19 +1,35 @@
 import styles from './Result.module.css';
 
 function Result() {
+
+
+  function handleSubmit(e){
+
+  }
+
+
   return (
 
-    <div>
+
     <div className={styles.popup}>
-    <button className={styles.x} ></button>
-    <div className={styles.inputContainer}>
-    <h1>enter name <span></span></h1>
-    <input className={styles.input}   />
-    <br></br>
 
+    <div className={styles.container} >
+      <div className={styles.container1}>
+      <h1> winner 🥇 : ramesh</h1>
+      <h1> runner 🥈 : suresh</h1>
+      </div>
 
+      <div className={styles.container2}>
 
-    </div>
+      <form onSubmit={handleSubmit}>
+  <button type='submit' className={styles.resetBtn}>
+    reset
+  </button>
+</form>
+      <button className={styles.navBtn}>
+        game result
+      </button>
+      </div>
 
     </div>
 
