@@ -1,3 +1,4 @@
+import { NavLink } from 'react-router-dom';
 import styles from './Result.module.css';
 
 function Result() {
@@ -26,9 +27,12 @@ function Result() {
     reset
   </button>
 </form>
+      <NavLink to="/resultPage">
       <button className={styles.navBtn}>
         game result
       </button>
+      </NavLink>
+
       </div>
 
     </div>

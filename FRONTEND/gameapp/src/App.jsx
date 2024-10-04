@@ -4,6 +4,8 @@ import HomePage from './pages/HomePage';
 import GamePage from "./pages/GamePage";
 import { Provider } from 'react-redux';
 import store from './store/store';
+import Result from "./components/result/Result";
+import ResultPage from "./pages/ResultPage";
 
 function App() {
 
@@ -14,6 +16,7 @@ function App() {
     <Routes>
     <Route index element={<HomePage/>} />
     <Route path="/gamepage" element={<GamePage />}/>
+    <Route path="/resultPage" element ={<ResultPage />} />
     </Routes>
 
   </BrowserRouter>

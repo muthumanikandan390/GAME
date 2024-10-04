@@ -7,7 +7,8 @@ import GameUi from '../components/gameui/GameUi';
 import { useSelector, useDispatch } from 'react-redux';
 import { useSpring, animated } from 'react-spring';
 import Result from '../components/result/Result';
-// import { playerArrLengthCheck } from '../store/slice/gameSlice';
+import { scoreLogic } from '../store/slice/gameSlice';
+
 
 
 function GamePage() {
@@ -20,8 +21,10 @@ function GamePage() {
   const currentEndCount = useSelector((state) => state.game.endCount)
   // console.log(console.log("currentEndCount",currentEndCount))
 
+  const dispatch = useDispatch()
+
+
   useEffect(() => {
-      // console.log("currentEndCount",currentEndCount);
       if(currentEndCount === 12 ) {
         setResultUi((prevState)=> !prevState )
       }

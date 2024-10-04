@@ -5,7 +5,7 @@ import scissor from '../../assets/scissor.png';
 import allSign from '../../assets/all.png';
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
-import { setplayerOne , setplayerTwo, endGameLogic} from '../../store/slice/gameSlice'
+import { setplayerOne , setplayerTwo, endGameLogic , scoreLogic} from '../../store/slice/gameSlice';
 
 
 function GameUi() {
@@ -206,6 +206,30 @@ useEffect(function(){
   }
 
 },[winner])
+
+
+//paying the stores score p1 p2 , winner name logic
+
+  useEffect(() => {
+      if(currentEndCount === 12 ) {
+        const bothscore = {
+          player1Name:p1,
+          player2Name:p2,
+          player1score:{countP1},
+          player2score:{countP2},
+          winner: countP1 > countP2 ? p1 : p2,
+          runner: countP1 < countP2 ? p1 : p2,
+          tie : countP1 === countP2 ? 'tie' : '',
+        }
+        dispatch(scoreLogic(bothscore))
+      }
+  }, [currentEndCount , countP1 , countP2 , dispatch , p1 , p2]);
+
+
+
+
+
+
 
 
 // useEffect(function(){

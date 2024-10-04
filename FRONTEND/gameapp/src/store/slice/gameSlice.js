@@ -44,12 +44,16 @@ export const gameSlice = createSlice({
 
     endGameLogic: (state , action) => {
       state.endCount += 1;
-    }
+    },
 
+    scoreLogic: (state , action) => {
+      const bothScore = action.payload
+      console.log("bothScore",bothScore)
+    }
 
   },
 });
 
-export const { increment, setplayerOne, setplayerTwo, endGameLogic} = gameSlice.actions;
+export const { increment, setplayerOne, setplayerTwo, endGameLogic , scoreLogic} = gameSlice.actions;
 
 export default gameSlice.reducer;
