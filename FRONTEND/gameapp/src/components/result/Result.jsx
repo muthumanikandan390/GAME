@@ -1,7 +1,19 @@
 import { NavLink } from 'react-router-dom';
 import styles from './Result.module.css';
+import { useSelector, useDispatch } from 'react-redux';
 
 function Result() {
+
+
+  const {player1, player2, player1Score , player2Score , winner , runner , tied} = useSelector((state) => state.game.result)
+  // console.log("resultObj form result ui",resultObj)
+  // const { player1, player2, player1Score, player2Score, winner, runner, tied } = useSelector(
+  //   (state) => state.game.result
+  // );
+  // console.log("resultObj",resultObj.player1)
+  console.log(tied.length)
+
+
 
 
   function handleSubmit(e){
@@ -16,8 +28,12 @@ function Result() {
 
     <div className={styles.container} >
       <div className={styles.container1}>
-      <h1> winner 🥇 : ramesh</h1>
-      <h1> runner 🥈 : suresh</h1>
+        { tied.length != 0 ? <h1>Tied</h1> :
+        <>
+        <h1> winner 🥇 : {player1}</h1>
+      <h1> runner 🥈 : {player2}</h1>
+      </> }
+
       </div>
 
       <div className={styles.container2}>

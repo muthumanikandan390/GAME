@@ -6,15 +6,15 @@ const initialState = {
   value: 0,
   playerArrLength: 0,
   endCount:0,
-  result:[{
-    player1:'ramesh',
-    player2:'suresh',
-    player1Score:10,
-    player2Score:20,
-    winner:'suresh',
-    runner:'ramesh',
-    tied:'tied',
-  }]
+  result:{
+    player1:'',
+    player2:'',
+    player1Score:0,
+    player2Score:0,
+    winner:'',
+    runner:'',
+    tied:'',
+  }
 };
 
 export const gameSlice = createSlice({
@@ -48,7 +48,17 @@ export const gameSlice = createSlice({
 
     scoreLogic: (state , action) => {
       const bothScore = action.payload
-      console.log("bothScore",bothScore)
+      // console.log("bothScore from store",bothScore)
+      state.result.player1 = bothScore.player1Name
+      state.result.player2 = bothScore.player2Name
+
+      state.result.player1Score = bothScore.player1score
+      state.result.player2Score = bothScore.player2score
+
+      state.result.winner = bothScore.winner
+      state.result.runner = bothScore.runner
+
+      state.result.tied  = bothScore.tie
     }
 
   },

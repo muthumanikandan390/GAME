@@ -210,20 +210,54 @@ useEffect(function(){
 
 //paying the stores score p1 p2 , winner name logic
 
+  // useEffect(() => {
+  //     if(currentEndCount === 12 ) {
+  //       const bothscore = {
+  //         player1Name:p1,
+  //         player2Name:p2,
+  //         player1score:{countP1},
+  //         player2score:{countP2},
+  //         winner: countP1 > countP2 ? p1 : p2,
+  //         runner: countP1 < countP2 ? p1 : p2,
+  //         tie : countP1 === countP2 ? 'tie' : '',
+  //       }
+  //       dispatch(scoreLogic(bothscore))
+  //     }
+  // }, [currentEndCount , countP1 , countP2 , dispatch , p1 , p2]);
+
+
   useEffect(() => {
-      if(currentEndCount === 12 ) {
-        const bothscore = {
-          player1Name:p1,
-          player2Name:p2,
-          player1score:{countP1},
-          player2score:{countP2},
+    if (currentEndCount === 12) {
+      let bothscore;
+
+      if (countP1 === countP2) {
+
+        bothscore = {
+          player1Name: p1,
+          player2Name: p2,
+          player1score: { countP1 },
+          player2score: { countP2 },
+          winner: '',
+          runner: '',
+          tie: 'tie'
+        };
+      } else {
+
+        bothscore = {
+          player1Name: p1,
+          player2Name: p2,
+          player1score: { countP1 },
+          player2score: { countP2 },
           winner: countP1 > countP2 ? p1 : p2,
           runner: countP1 < countP2 ? p1 : p2,
-          tie : countP1 === countP2 ? 'tie' : '',
-        }
-        dispatch(scoreLogic(bothscore))
+          tie: ''  ,
+        };
       }
-  }, [currentEndCount , countP1 , countP2 , dispatch , p1 , p2]);
+
+      dispatch(scoreLogic(bothscore));
+      console.log(bothscore);
+    }
+  }, [currentEndCount, countP1, countP2, dispatch, p1, p2]);
 
 
 
@@ -231,17 +265,6 @@ useEffect(function(){
 
 
 
-
-// useEffect(function(){
-
-//   if (count === 3 ){
-//     setImgP1(allSign)
-//     setImgP2(allSign)
-//     setCount(0)
-//     console.log("count",count)
-//   }
-
-// },[count])
 
 
 
