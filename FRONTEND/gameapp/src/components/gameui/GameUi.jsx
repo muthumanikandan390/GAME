@@ -6,24 +6,14 @@ import allSign from '../../assets/all.png';
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { setplayerOne , setplayerTwo, endGameLogic , scoreLogic} from '../../store/slice/gameSlice';
-
+import axios from 'axios';
 
 function GameUi() {
 
 const [p1 , p2] = useSelector((state) => state.game.playerArr)
 
 const currentEndCount = useSelector((state) => state.game.endCount)
-// console.log(console.log("currentEndCount",currentEndCount))
-
-// useEffect(() => {
-//   if (currentEndCount === 8) {
-//     // console.log("end");
-//   }
-// }, [currentEndCount]);
-
-
 const dispatch = useDispatch();
-
 
 
 const [imgP1, setImgP1] = useState(allSign)
@@ -67,12 +57,10 @@ function handleCount(){
 
 function handleDisableP1() {
   setDisablerP1(true);
-  // setDisablerP2(false);
 }
 
 function handleDisableP2() {
   setDisablerP2(true);
-  // setDisablerP1(false);
 }
 
 
@@ -87,8 +75,6 @@ function handleEnable(){
 
 
 const imgArr = [stone, paper, scissor]
-// console.log("imgArr",imgArr[0])
-// console.log(typeof(paper))
 
 function randomGen(){
   const inputValue = Math.floor(Math.random() * (3))
@@ -106,10 +92,6 @@ useEffect(function(){
   if (imgP1 === scissor) {
     setSign('scissor')
   }
-
-  // if ((imgP1 === allSign))
-  //   setSign('select')
-
   if (imgP2 === stone) {
     setSignP2('stone')
   }
@@ -119,8 +101,6 @@ useEffect(function(){
   if (imgP2 === scissor) {
     setSignP2('scissor')
   }
-  // if ((imgP2 === allSign))
-  //   setSign('select')
 
   },[imgP1 , imgP2])
 
@@ -138,31 +118,9 @@ function handlerRandomP2(){
   dispatch(endGameLogic())
 }
 
-// useEffect(function(){
 
-//   if (imgP1 === imgP2){
-//     setWinner('tie')
-//     console.log('tie')
-//     return
-//   }
-
-//   if (imgP1 === stone && imgP2 === scissor || imgP1 === scissor && imgP2 === paper || imgP1 === 'paper' && imgP2 === stone) {
-//     setWinner('P1')
-//     console.log('P1')
-//     return
-//   }
-
-//   if (imgP2 === stone && imgP1 === scissor || imgP2 === scissor && imgP1 === paper || imgP2 === 'paper' && imgP1 === stone) {
-//     setWinner('P2')
-//     console.log('P2')
-//     return
-//   }
-//   console.log('P2')
-
-// },[imgP1 , imgP2])
 
 useEffect(() => {
-  // Check for a tie
   if (imgP1 === imgP2) {
     setWinner('tie');
     console.log('tie');
@@ -184,12 +142,9 @@ useEffect(() => {
     (imgP2 === paper && imgP1 === stone)
   ) {
     setWinner('P2');
-    // setImgP2(allSign)
     console.log('P2');
     return;
   }
-  // setImgP1(allSign)
-  // setImgP2(allSign)
   console.log('No winner determined');
 }, [imgP1, imgP2]);
 
@@ -206,24 +161,6 @@ useEffect(function(){
   }
 
 },[winner])
-
-
-//paying the stores score p1 p2 , winner name logic
-
-  // useEffect(() => {
-  //     if(currentEndCount === 12 ) {
-  //       const bothscore = {
-  //         player1Name:p1,
-  //         player2Name:p2,
-  //         player1score:{countP1},
-  //         player2score:{countP2},
-  //         winner: countP1 > countP2 ? p1 : p2,
-  //         runner: countP1 < countP2 ? p1 : p2,
-  //         tie : countP1 === countP2 ? 'tie' : '',
-  //       }
-  //       dispatch(scoreLogic(bothscore))
-  //     }
-  // }, [currentEndCount , countP1 , countP2 , dispatch , p1 , p2]);
 
 
   useEffect(() => {
@@ -254,18 +191,14 @@ useEffect(function(){
         };
       }
 
+
+      axios.post("http://localhost:5000/resultData",bothscore).then((response) => {
+        console.log(response.status, response.data);
+      });
       dispatch(scoreLogic(bothscore));
       console.log(bothscore);
     }
   }, [currentEndCount, countP1, countP2, dispatch, p1, p2]);
-
-
-
-
-
-
-
-
 
 
   return (

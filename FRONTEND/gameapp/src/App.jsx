@@ -6,11 +6,14 @@ import { Provider } from 'react-redux';
 import store from './store/store';
 import Result from "./components/result/Result";
 import ResultPage from "./pages/ResultPage";
+import { PrimeReactProvider } from 'primereact/api';
+
 
 function App() {
 
   return (
     <Provider store={store}>
+
     <BrowserRouter>
 
     <Routes>
@@ -20,6 +23,7 @@ function App() {
     </Routes>
 
   </BrowserRouter>
+
   </Provider>
   )
 }

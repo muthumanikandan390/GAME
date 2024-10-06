@@ -18,7 +18,6 @@ mongoose.connect(db)
   .catch(err => console.error("Could not connect to db:", err));
 
 app.use(bodyParser.json());
-
 app.use('/', routes);
 
 app.listen(PORT, () => console.log(`Server running on port: http://localhost:${PORT}`));
