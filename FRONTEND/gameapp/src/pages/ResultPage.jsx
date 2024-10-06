@@ -55,15 +55,15 @@ const [ data , setData ] = useState({})
   return (
     <div className={styles.pageWrapper}>
       <div>
-        <h1 className={styles.leaderHeading}> Leader Board </h1>
+        <h1 className={styles.leaderHeading}> Leader Board  🏆 </h1>
       <TableContainer component={Paper}>
       <Table sx={{ minWidth: 950 }} aria-label="simple table">
         <TableHead>
           <TableRow>
-            <TableCell align="center">match</TableCell>
+            <TableCell align="center">Match</TableCell>
 
-            <TableCell align="center">winner</TableCell>
-            <TableCell align="center">runner</TableCell>
+            <TableCell align="center">Winner</TableCell>
+            <TableCell align="center">Runner</TableCell>
             <TableCell align="center">Tied</TableCell>
           </TableRow>
         </TableHead>
@@ -78,8 +78,8 @@ const [ data , setData ] = useState({})
                       <TableCell align="center" component="th" scope="row">
                         {Number(key) + 1}
                       </TableCell>
-                      <TableCell align="center">{val.player1Name}</TableCell>
-                      <TableCell align="center">{val.player2Name}</TableCell>
+                      <TableCell align="center">{val.winner}</TableCell>
+                      <TableCell align="center">{val.runner}</TableCell>
                       <TableCell align="center">{ val.tie.length === 0 ? '-' : val.tie }</TableCell>
                     </TableRow>
                   ))
