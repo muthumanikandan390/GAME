@@ -30,8 +30,8 @@ function Result() {
       <div className={styles.container1}>
         { tied.length != 0 ? <h1>Tied</h1> :
         <>
-        <h1> winner 🥇 : {player1}</h1>
-      <h1> runner 🥈 : {player2}</h1>
+        <h1> winner 🥇 : {winner}</h1>
+      <h1> runner 🥈 : {runner}</h1>
       </> }
 
       </div>

@@ -245,7 +245,15 @@ useEffect(function(){
 <h2>player2 score : {countP2}</h2>
 </div>
 <div className={styles.resultContainer}>
-<h1>result : plyer1 lead</h1>
+  {/* {countP1 === countP2 ? <h1>tie</h1> : { countP1 > countP2 ? <h1>player1 lead</h1> : <h1>player2 lead</h1> } } */}
+
+  {countP1 === countP2 ? (
+    <h1>tie</h1>
+  ) : countP1 > countP2 ? (
+    <h1>player1 lead</h1>
+  ) : (
+    <h1>player2 lead</h1>
+  ) }
 </div>
 
   </div>

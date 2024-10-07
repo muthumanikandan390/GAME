@@ -68,36 +68,6 @@ useEffect(function(){
 },[userName.length])
 
 
-// useEffect(function(){
-//   if(userName.length > 0 ){
-//     const newdata = "haiya"
-//     fetch("/")
-//     .then(res => res.json())
-//     .then(data=>newdata)
-//     console.log("useEffects - userName",userName)
-//   }
-// })
-
-// useEffect(() => {
-//   const newdata = "haiya"; // The data to send
-
-//   // Send POST request with only newdata
-//   fetch("http://localhost:5000/", {
-//     method: "POST", // Specify POST method
-//     headers: {
-//       "Content-Type": "application/json", // Specify content type
-//     },
-//     body: JSON.stringify({ newdata }), // Send newdata
-//   })
-//     .then(res => res.json())
-//     .then(data => {
-//       console.log("Server response:", data); // Handle server response
-//     })
-//     .catch(err => console.error("Fetch error:", err));
-
-//   console.log("useEffect - Sending newdata to backend:", newdata);
-// }, []); // Runs on component mount
-
 
 useEffect(function(){
   if(userName.length > 1 ){
