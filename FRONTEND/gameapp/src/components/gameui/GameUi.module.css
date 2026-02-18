@@ -53,8 +53,8 @@ flex-direction:column;
   /* background-color: rgb(28, 182, 84); */
   flex: 2;
   display: flex;
-  justify-content: center; /* Horizontally center */
-  align-items: center; /* Vertically center */
+  justify-content: center;
+  align-items: center;
   text-align: center;
 }
 

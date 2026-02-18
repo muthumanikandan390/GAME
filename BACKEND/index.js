@@ -7,7 +7,8 @@ import routes from './routes.js';
 const app = express();
 const PORT = 5000;
 
-const db = "mongodb+srv://muthumanikandan390d:FVow4DOsbw4pkMLH@manikandandb.3zn9a.mongodb.net/";
+// const db = "mongodb+srv://muthumanikandan390d:FVow4DOsbw4pkMLH@manikandandb.3zn9a.mongodb.net/";
+const db = "mongodb://localhost:27017/gamedb";
 
 app.use(cors());
 
